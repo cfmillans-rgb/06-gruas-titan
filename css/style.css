@@ -1,0 +1,293 @@
+/* Variables */
+:root {
+    --titan-yellow: #F5C518;
+    --titan-black: #1A1A1A;
+    --titan-red: #D62828;
+    --titan-gray: #9A9A9A;
+    --titan-white: #FFFFFF;
+}
+
+/* Base */
+body {
+    font-family: 'Roboto Condensed', sans-serif;
+    color: var(--titan-black);
+    overflow-x: hidden;
+}
+
+h1, h2, h3, h4, h5, h6, .font-archivo {
+    font-family: 'Archivo Black', sans-serif;
+}
+
+.logo-text {
+    font-family: 'Archivo Black', sans-serif;
+    letter-spacing: -1px;
+}
+
+.bg-dark, .bg-black {
+    background-color: var(--titan-black) !important;
+}
+
+.text-titan-yellow { color: var(--titan-yellow); }
+.text-titan-red { color: var(--titan-red); }
+.text-titan-gray { color: var(--titan-gray); }
+.bg-titan-red { background-color: var(--titan-red) !important; }
+
+/* Top Bar */
+.top-bar {
+    background-color: var(--titan-red);
+    color: var(--titan-white);
+    font-size: 0.95rem;
+    letter-spacing: 0.5px;
+}
+
+/* Hero Section */
+.hero-section {
+    min-height: 85vh;
+    background-color: var(--titan-black);
+    background-image: url('https://placehold.co/1920x1080/1A1A1A/333333?text=Carretera+Noche+Con+Luces');
+    background-size: cover;
+    background-position: center;
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(26,26,26,0.95) 0%, rgba(214,40,40,0.5) 100%);
+    z-index: 0;
+}
+
+.z-index-1 {
+    z-index: 1;
+}
+
+.text-shadow {
+    text-shadow: 2px 2px 10px rgba(0,0,0,0.8);
+}
+
+/* Giant Call Button & Glow */
+.btn-call-giant {
+    background-color: var(--titan-yellow);
+    color: var(--titan-black);
+    font-family: 'Archivo Black', sans-serif;
+    border: none;
+    border-radius: 12px;
+    padding: 1.5rem 3rem;
+    font-size: 2.2rem;
+    text-decoration: none;
+    display: inline-block;
+    transition: transform 0.2s ease, background-color 0.2s ease;
+    line-height: 1.2;
+    position: relative;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+}
+
+@media (max-width: 576px) {
+    .btn-call-giant {
+        padding: 1.2rem 2rem;
+        font-size: 1.5rem;
+    }
+}
+
+.btn-call-giant:hover, .btn-call-giant:focus {
+    background-color: #ffd642;
+    color: var(--titan-black);
+    transform: scale(1.05) translateY(-5px);
+}
+
+.btn-call-giant:focus {
+    outline: 4px solid var(--titan-white);
+    outline-offset: 4px;
+}
+
+.pulse-glow {
+    animation: pulse-glow-anim 2s infinite;
+}
+
+@keyframes pulse-glow-anim {
+    0% {
+        box-shadow: 0 0 0 0 rgba(245, 197, 24, 0.7);
+    }
+    70% {
+        box-shadow: 0 0 0 30px rgba(245, 197, 24, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(245, 197, 24, 0);
+    }
+}
+
+/* Prefers Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+    .pulse-glow {
+        animation: none;
+        box-shadow: 0 4px 15px rgba(245, 197, 24, 0.4);
+    }
+    .radar-ping::after, .radar-ping::before {
+        animation: none !important;
+        display: none;
+    }
+    .btn-call-giant:hover, .btn-call-giant:focus {
+        transform: none;
+    }
+    .services-section .card:hover {
+        transform: none;
+    }
+    .btn-whatsapp:hover, .btn-whatsapp:focus {
+        transform: none;
+    }
+}
+
+/* Map Section & Radar Ping */
+.map-container {
+    border: 4px solid var(--titan-yellow);
+    border-radius: 12px;
+    overflow: hidden;
+    position: relative;
+}
+
+.radar-ping {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 20px;
+    height: 20px;
+    background-color: var(--titan-red);
+    border-radius: 50%;
+    z-index: 2;
+    pointer-events: none;
+}
+
+.radar-ping::after {
+    content: '';
+    position: absolute;
+    top: -15px;
+    left: -15px;
+    right: -15px;
+    bottom: -15px;
+    border: 3px solid var(--titan-red);
+    border-radius: 50%;
+    animation: radar-anim 2s infinite ease-out;
+}
+
+.radar-ping::before {
+    content: '';
+    position: absolute;
+    top: -30px;
+    left: -30px;
+    right: -30px;
+    bottom: -30px;
+    border: 2px solid rgba(214, 40, 40, 0.6);
+    border-radius: 50%;
+    animation: radar-anim 2s infinite ease-out 0.5s;
+}
+
+@keyframes radar-anim {
+    0% {
+        transform: scale(0.1);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(1.5);
+        opacity: 0;
+    }
+}
+
+/* Sections Global */
+.section-title {
+    color: var(--titan-black);
+    position: relative;
+    padding-bottom: 20px;
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 5px;
+    background-color: var(--titan-red);
+    border-radius: 5px;
+}
+
+.bg-dark .section-title {
+    color: var(--titan-yellow);
+}
+
+/* Services Cards */
+.services-section .card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.services-section .card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 1rem 3rem rgba(0,0,0,.15) !important;
+}
+
+.services-section .card-title {
+    color: var(--titan-red);
+}
+
+/* Accordion Customization */
+.accordion-button {
+    font-size: 1.1rem;
+}
+.accordion-button:not(.collapsed) {
+    background-color: var(--titan-yellow);
+    color: var(--titan-black);
+    box-shadow: none;
+}
+.accordion-button:focus {
+    box-shadow: 0 0 0 0.25rem rgba(245, 197, 24, 0.4);
+    outline: 2px solid var(--titan-black);
+}
+
+/* Floating WhatsApp Button */
+.btn-whatsapp {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background-color: #25D366;
+    color: white;
+    border: none;
+    border-radius: 50px;
+    padding: 15px 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    cursor: pointer;
+    transition: transform 0.2s, background-color 0.2s;
+    font-family: 'Roboto Condensed', sans-serif;
+    font-size: 1.1rem;
+}
+
+@media (max-width: 767px) {
+    .btn-whatsapp {
+        padding: 15px;
+        border-radius: 50%;
+        bottom: 20px;
+        right: 20px;
+    }
+}
+
+.btn-whatsapp:hover, .btn-whatsapp:focus {
+    background-color: #20BA56;
+    transform: scale(1.05);
+}
+
+.btn-whatsapp:focus {
+    outline: 4px solid var(--titan-black);
+    outline-offset: 2px;
+}
+
+/* Utilities */
+.font-archivo {
+    font-family: 'Archivo Black', sans-serif !important;
+}
