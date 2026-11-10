@@ -39,49 +39,14 @@ document.addEventListener('DOMContentLoaded', () => {
         openWhatsApp("¡Hola Titán! Necesito una grúa. Estoy en: [ESCRIBE TU DIRECCIÓN AQUÍ]");
     });
 
-    // Geolocation trigger logic
+    // Diseño de muestra: este botón ya no pide ni envía la ubicación.
+    const geoDemo = document.getElementById('geoDemo');
     btnWhatsapp.addEventListener('click', () => {
-        // Reset modal UI to loading state
-        geoLoading.classList.remove('d-none');
+        geoLoading.classList.add('d-none');
         geoError.classList.add('d-none');
-        
+        if (geoDemo) geoDemo.classList.remove('d-none');
         if (geoModal) {
             geoModal.show();
-        }
-
-        // Check if browser supports Geolocation API
-        if ("geolocation" in navigator) {
-            navigator.geolocation.getCurrentPosition(
-                // Success Callback
-                (position) => {
-                    const lat = position.coords.latitude;
-                    const lon = position.coords.longitude;
-                    
-                    // Create Maps link
-                    const mapsLink = `https://www.google.com/maps?q=${lat},${lon}`;
-                    const message = `¡Hola Titán! Necesito una grúa urgente. Mi ubicación aproximada es:\n${mapsLink}`;
-                    
-                    openWhatsApp(message);
-                },
-                // Error Callback (Denied, Timeout, or Unavailable)
-                (error) => {
-                    console.warn(`Geolocation Error (${error.code}): ${error.message}`);
-                    // Show error state in modal
-                    geoLoading.classList.add('d-none');
-                    geoError.classList.remove('d-none');
-                },
-                // Geolocation Options
-                {
-                    enableHighAccuracy: true,
-                    timeout: 8000, // 8 seconds before timing out
-                    maximumAge: 0
-                }
-            );
-        } else {
-            // Geolocation not supported at all
-            console.warn("Geolocation is not supported by this browser.");
-            geoLoading.classList.add('d-none');
-            geoError.classList.remove('d-none');
         }
     });
 });
