@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const btnProceedWhatsApp = document.getElementById('btnProceedWhatsApp');
     
     // Titán 24/7 WhatsApp Number (Fictional for this project)
-    const phoneNumber = '56912345678';
+    const phoneNumber = '569XXXXXXXX';
 
     /**
      * Opens WhatsApp in a new tab with the pre-filled message
